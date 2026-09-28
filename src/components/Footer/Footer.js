@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Footer.css";
 import logo from "../../assets/logo.png"; // Replace with your logo path
 import galleryImage1 from "../../assets/gallery1.jpg"; // Replace with actual paths
@@ -10,6 +10,22 @@ import galleryImage6 from "../../assets/gallery6.jpg"; // Replace with actual pa
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
+  useEffect(() => {
+    // Load Zanderio widget script
+    const script = document.createElement("script");
+    script.src = "https://cdn.zanderio.ai/widget/loader.js";
+    script.setAttribute("data-id", "wdg_2w4yPKN30BP8Ue3XfcvcoIjG");
+    script.defer = true;
+    document.body.appendChild(script);
+
+    // Cleanup on unmount
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <footer className="footer-container">
       <div className="footer-content">
@@ -45,22 +61,21 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-social">
-  <h3>Follow Us</h3>
-  <p>Stay connected with us on social media for the latest updates, offers, and beauty tips. Join our community of beauty enthusiasts!</p>
-  <div className="social-icons">
-    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
-    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
-    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest"></i></a>
-    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i></a>
-  </div>
-  <div className="footer-community">
-    <p><strong>Trending Hashtags:</strong> #GlamTheGirl #BeautyRedefined #SalonExperience</p>
-    <p>Subscribe to our newsletter for exclusive updates and offers!</p>
-  </div>
-</div>
-
+          <h3>Follow Us</h3>
+          <p>Stay connected with us on social media for the latest updates, offers, and beauty tips. Join our community of beauty enthusiasts!</p>
+          <div className="social-icons">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i></a>
+          </div>
+          <div className="footer-community">
+            <p><strong>Trending Hashtags:</strong> #GlamTheGirl #BeautyRedefined #SalonExperience</p>
+            <p>Subscribe to our newsletter for exclusive updates and offers!</p>
+          </div>
+        </div>
       </div>
       <div className="footer-bottom">
         <p>© 2024 Glam The Girl. All rights reserved. Designed with ❤️ for beauty enthusiasts.</p>
